@@ -4,11 +4,13 @@ import br.ufscar.dc.dsw.dtos.UsuarioCadastroDTO;
 import br.ufscar.dc.dsw.models.UsuarioModel;
 import br.ufscar.dc.dsw.models.enums.Papel;
 import br.ufscar.dc.dsw.services.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UsuarioSeeder {
+    private static final Logger logger = LoggerFactory.getLogger(UsuarioSeeder.class);
     private final UsuarioService usuarioService;
 
     public UsuarioSeeder(UsuarioService usuarioService) {
@@ -16,7 +18,7 @@ public class UsuarioSeeder {
     }
 
     public void seedUsuarios() {
-        System.out.println("Verificando usuários iniciais...");
+        logger.info("Verificando usuários iniciais...");
 
         // Criar usuário 'admin' se não existir
         UsuarioModel adminExistente = usuarioService.buscarPorEmail("admin@admin.com");
@@ -29,9 +31,9 @@ public class UsuarioSeeder {
                     Papel.ADMIN
             );
             usuarioService.salvarNovoUsuario(admin);
-            System.out.println("✓ Usuário 'admin' criado.");
+            logger.info("✓ Usuário 'admin' criado.");
         } else {
-            System.out.println("✓ Usuário 'admin' já existe.");
+            logger.info("✓ Usuário 'admin' já existe.");
         }
 
         // Criar usuário 'tester' se não existir
@@ -45,9 +47,9 @@ public class UsuarioSeeder {
                     Papel.TESTER
             );
             usuarioService.salvarNovoUsuario(tester);
-            System.out.println("✓ Usuário 'tester' criado.");
+            logger.info("✓ Usuário 'tester' criado.");
         } else {
-            System.out.println("✓ Usuário 'tester' já existe.");
+            logger.info("✓ Usuário 'tester' já existe.");
         }
     }
 } 

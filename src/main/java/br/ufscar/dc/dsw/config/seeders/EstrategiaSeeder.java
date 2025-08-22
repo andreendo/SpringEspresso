@@ -6,11 +6,13 @@ import br.ufscar.dc.dsw.models.ExemploModel;
 import br.ufscar.dc.dsw.repositories.DicaRepository;
 import br.ufscar.dc.dsw.repositories.EstrategiaRepository;
 import br.ufscar.dc.dsw.repositories.ExemploRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EstrategiaSeeder {
+    private static final Logger logger = LoggerFactory.getLogger(EstrategiaSeeder.class);
     private final EstrategiaRepository estrategiaRepository;
     private final DicaRepository dicaRepository;
     private final ExemploRepository exemploRepository;
@@ -23,11 +25,11 @@ public class EstrategiaSeeder {
 
     public void seedEstrategias() {
         if (estrategiaRepository.count() > 0) {
-            System.out.println("✓ Estratégias já existem no banco de dados.");
+            logger.info("✓ Estratégias já existem no banco de dados.");
             return;
         }
 
-        System.out.println("Criando estratégias iniciais...");
+        logger.info("Criando estratégias iniciais...");
 
         // Estratégia 1: Teste de Interface
         EstrategiaModel estrategia1 = criarEstrategiaInterface();
@@ -38,10 +40,10 @@ public class EstrategiaSeeder {
         // Estratégia 3: Teste de Segurança
         EstrategiaModel estrategia3 = criarEstrategiaSeguranca();
 
-        System.out.println("✓ Estratégias iniciais criadas com sucesso!");
-        System.out.println("  - " + estrategia1.getNome());
-        System.out.println("  - " + estrategia2.getNome());
-        System.out.println("  - " + estrategia3.getNome());
+        logger.info("✓ Estratégias iniciais criadas com sucesso!");
+        logger.info("  - " + estrategia1.getNome());
+        logger.info("  - " + estrategia2.getNome());
+        logger.info("  - " + estrategia3.getNome());
     }
 
     private EstrategiaModel criarEstrategiaInterface() {

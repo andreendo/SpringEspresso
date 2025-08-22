@@ -3,9 +3,7 @@ package br.ufscar.dc.dsw.controllers;
 import br.ufscar.dc.dsw.dtos.UsuarioCadastroDTO;
 import br.ufscar.dc.dsw.dtos.UsuarioDTO;
 import br.ufscar.dc.dsw.dtos.UsuarioEdicaoDTO;
-import br.ufscar.dc.dsw.models.enums.Papel;
 import br.ufscar.dc.dsw.services.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -22,8 +20,11 @@ import java.util.UUID;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-    @Autowired
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
+
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     // Listar todos os usuários
     @GetMapping("/listar")
