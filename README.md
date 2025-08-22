@@ -2,6 +2,8 @@
 
 ---
 
+Este projeto foi, originalmente desenvolvido no contexto da disciplina de Desenvolvimento Web 1 do DC/UFSCar, por [ronanpjr](https://github.com/ronanpjr), [Fekenji](https://github.com/Fekenji), [GriseldaJusto](https://github.com/GriseldaJusto), [jooj-arthur](https://github.com/jooj-arthur) e [RenanZago](https://github.com/RenanZago).
+
 ## 🚀 Tecnologias utilizadas
 **Back-end:**
 
@@ -50,6 +52,8 @@ Antes de começar, certifique-se de ter instalado:
 ---
 
 ## 2️⃣ Configuração do banco de dados
+É necessário uma instância do SGBD MySQL executando com um banco de dados chamado `EspressoTestingJbaDB`. Veja a pasta [/docker](/docker) para iniciar uma instância usando o Docker. 
+
 O banco de dados será criado automaticamente na primeira execução.
 
 ---
@@ -57,8 +61,10 @@ O banco de dados será criado automaticamente na primeira execução.
 ## 3️⃣ Build do projeto com Maven
 No terminal, na raiz do projeto execute esse comando:  
 
+```bash
+	./mvnw clean install
+```
 
-**mvn clean install**
 
 ---
 
@@ -67,9 +73,21 @@ Agora, para iniciar a aplicação
 
 
 **Execute esse comando:**  
-**mvn spring-boot:run**  
+
+```bash
+	./mvnw spring-boot:run
+```
 
 
 A aplicação Spring Boot iniciará na porta padrão 8080.  
 Acesse no navegador:  
-**http://localhost:8080**
+[http://localhost:8080](http://localhost:8080)
+
+---
+
+## 5️⃣ Executar os testes automatizados
+No terminal, na raiz do projeto execute esse comando:  
+
+```bash
+	./mvnw test
+```
