@@ -86,8 +86,14 @@ Acesse no navegador:
 ---
 
 ## 5️⃣ Executar os testes automatizados
-No terminal, na raiz do projeto execute esse comando:  
+No terminal, na raiz do projeto execute esse comando para os **testes de unidade**:  
 
 ```bash
 	./mvnw test
+```
+
+Para os **testes de integração e E2E**, execute o comando:
+
+```bash
+	./mvnw verify
 ```

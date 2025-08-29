@@ -1,5 +1,6 @@
-package br.ufscar.dc.dsw.controllers;
+package br.ufscar.dc.dsw.unit.controllers;
 
+import br.ufscar.dc.dsw.controllers.UsuarioController;
 import br.ufscar.dc.dsw.dtos.UsuarioDTO;
 import br.ufscar.dc.dsw.models.enums.Papel;
 import br.ufscar.dc.dsw.services.UsuarioService;
