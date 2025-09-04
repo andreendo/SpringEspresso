@@ -32,8 +32,7 @@ jobs:
       run: mvn -B package --file pom.xml -D skipTests --no-transfer-progress
 
     - name: Install Playwright dependencies
-      run: |
-        sudo mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install-deps" -Dexec.classpathScope=test
+      run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
 
     - name: Run tests
       run: mvn test verify
