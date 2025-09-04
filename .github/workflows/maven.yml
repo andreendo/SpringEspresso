@@ -30,7 +30,7 @@ jobs:
     
     - name: Install Playwright dependencies
       run: |
-        sudo mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install-deps"
+        sudo mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install-deps" -Dexec.classpathScope=test
 
     - name: Build and Test with Maven
       run: mvn -B package --file pom.xml
