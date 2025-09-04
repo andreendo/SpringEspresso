@@ -23,7 +23,7 @@ public class UserLoginE2ETest {
     public static void beforeAll() {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false)
+                new BrowserType.LaunchOptions().setHeadless(true)
         );
     }
 
