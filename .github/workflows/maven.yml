@@ -27,5 +27,10 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    
+    - name: Install Playwright dependencies
+      run: |
+        sudo mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install-deps"
+
+    - name: Build and Test with Maven
       run: mvn -B package --file pom.xml
