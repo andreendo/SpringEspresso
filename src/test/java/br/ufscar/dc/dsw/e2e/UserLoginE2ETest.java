@@ -58,6 +58,51 @@ public class UserLoginE2ETest {
         var loggedUser = page.locator("h2 > span:nth-of-type(2)").textContent();
         assertEquals("admin@admin.com", loggedUser);
 
-        // TODO
+        // pode ver usuários, projetos, estratégias, sessões de teste
+    }
+
+    @Test
+    void shouldTesterLoginSuccessfully() throws Exception {
+        var url = "http://localhost:" + serverPort;
+        page.navigate(url);
+
+        assertTrue(page.locator("h1").textContent().contains("Espresso Game Testing"));
+
+        page.locator("#username").fill("tester@tester.com");
+        page.locator("#password").fill("tester");
+        page.locator(".button-primary").click();
+
+        var loggedUser = page.locator("h2 > span:nth-of-type(2)").textContent();
+        assertEquals("tester@tester.com", loggedUser);
+
+        // FALTANDO ASSERTIVAS
+        // usuários
+        page.locator("a[href='/usuarios/listar']").click();
+        page.locator("a[href='/home']").click(); // voltar
+
+        // projetos
+        page.locator("a[href='/projetos/listar']").click();
+        page.locator("a[href='/home']").click(); // voltar
+
+        // estratégias
+        page.locator("a[href='/estrategias']").click();
+        page.locator("a[href='/home']").click(); // voltar
+
+        // sessões de teste
+        page.locator("a[href='/sessoes/minhas-sessoes']").click();
+        page.locator("a[href='/']").click(); // voltar
+
+    }
+
+    @Test
+    void shouldVisitorSeeStrategies() throws Exception {
+        var url = "http://localhost:" + serverPort;
+        page.navigate(url);
+
+        assertTrue(page.locator("h1").textContent().contains("Espresso Game Testing"));
+
+        page.locator(".button-secondary").click();
+        var pageTitle = page.locator(".wrapper > h1").textContent();
+        assertTrue(pageTitle.contains("Estratégias") || pageTitle.contains("Strategies"));
     }
 }
