@@ -32,7 +32,7 @@ jobs:
       run: mvn dependency:build-classpath -Dmdep.outputFile=cp.txt
 
     - name: Install Playwright Browsers
-      run: java -cp "$(cat cp.txt)" com.microsoft.playwright.CLI install
+      run: java -cp "$(cat cp.txt)" com.microsoft.playwright.CLI -D exec.args="install-deps" 
 
     - name: Run Tests
       run: mvn test verify
