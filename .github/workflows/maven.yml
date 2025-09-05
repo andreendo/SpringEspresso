@@ -28,11 +28,22 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build and Install
-      run: mvn -B package --file pom.xml -D skipTests --no-transfer-progress
+    - name: Build project dependencies classpath
+      run: mvn dependency:build-classpath -Dmdep.outputFile=cp.txt
 
-    - name: Install Playwright dependencies
-      run: mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps" -Dexec.classpathScope=test
-      
-    - name: Run tests
+    - name: Install Playwright Browsers
+      run: |
+          # Use the built classpath to run the CLI install command
+        java -cp "$(cat cp.txt)" com.microsoft.playwright.CLI install
+
+    - name: Run Tests
       run: mvn test verify
+
+    # - name: Build and Install
+    #   run: mvn -B package --file pom.xml -D skipTests --no-transfer-progress
+
+    # - name: Install Playwright dependencies
+    #   run: mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps" -Dexec.classpathScope=test
+      
+    # - name: Run tests
+    #   run: mvn test verify
