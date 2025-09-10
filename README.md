@@ -2,7 +2,9 @@
 
 ---
 
-Este projeto foi, originalmente desenvolvido no contexto da disciplina de Desenvolvimento Web 1 do DC/UFSCar, por [ronanpjr](https://github.com/ronanpjr), [Fekenji](https://github.com/Fekenji), [GriseldaJusto](https://github.com/GriseldaJusto), [jooj-arthur](https://github.com/jooj-arthur) e [RenanZago](https://github.com/RenanZago).
+Este projeto foi, originalmente desenvolvido no contexto da disciplina de Desenvolvimento Web 1 - 1o. semestre de 2025 - no DC/UFSCar, por [ronanpjr](https://github.com/ronanpjr), [Fekenji](https://github.com/Fekenji), [GriseldaJusto](https://github.com/GriseldaJusto), [jooj-arthur](https://github.com/jooj-arthur) e [RenanZago](https://github.com/RenanZago).
+
+[![Java CI with Maven](https://github.com/andreendo/SpringEspresso/actions/workflows/maven.yml/badge.svg)](https://github.com/andreendo/espresso-testing/actions/workflows/maven.yml)
 
 ## 🚀 Tecnologias utilizadas
 **Back-end:**

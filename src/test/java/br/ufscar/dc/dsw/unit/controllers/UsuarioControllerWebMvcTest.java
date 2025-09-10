@@ -5,7 +5,6 @@ import br.ufscar.dc.dsw.dtos.UsuarioDTO;
 import br.ufscar.dc.dsw.models.enums.Papel;
 import br.ufscar.dc.dsw.services.UsuarioService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -15,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import java.util.UUID;
 
+import static org.mockito.Mockito.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -47,7 +47,7 @@ class UsuarioControllerWebMvcTest {
                 .andExpect(model().attribute("listaUsuarios", usuarios));
 
         // assertivas relacionadas ao mock
-        Mockito.verify(usuarioService).buscarTodos();
-        Mockito.verifyNoMoreInteractions(usuarioService);
+        verify(usuarioService).buscarTodos();
+        verifyNoMoreInteractions(usuarioService);
     }
 }

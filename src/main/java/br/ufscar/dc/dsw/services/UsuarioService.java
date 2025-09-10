@@ -27,11 +27,13 @@ import java.util.stream.Collectors;
 @Transactional
 public class UsuarioService implements UserDetailsService {
 
-    @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    public UsuarioService(UsuarioRepository usuarioRepository, BCryptPasswordEncoder passwordEncoder) {
+        this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public UsuarioDTO salvarNovoUsuario(UsuarioCadastroDTO usuarioCadastroDTO) {
         Optional<UsuarioModel> existingUser = usuarioRepository.findByEmail(usuarioCadastroDTO.email());
