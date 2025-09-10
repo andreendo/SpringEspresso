@@ -125,8 +125,10 @@
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
                     </includes>
+                    <excludes>
+                        <exclude>**/*IT.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -144,31 +146,12 @@
                 <configuration>
                     <includes>
                         <include>**/*IT.java</include>
-                        <include>**/*E2E.java</include>
                     </includes>
+                    <excludes>
+                        <exclude>**/*Test.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
-            <!-- <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>playwright-install-deps</id>
-                        <phase>generate-test-resources</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.microsoft.playwright.CLI</mainClass>
-                            <arguments>
-                                <argument>install-deps</argument>
-                            </arguments>
-                            <classpathScope>test</classpathScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin> -->
         </plugins>
     </build>
 

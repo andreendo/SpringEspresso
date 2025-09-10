@@ -9,7 +9,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UserLoginE2ETest {
+public class UserLoginE2EIT {
 
     @LocalServerPort
     private int serverPort;
@@ -49,13 +49,13 @@ public class UserLoginE2ETest {
         var url = "http://localhost:" + serverPort;
         page.navigate(url);
 
-        assertTrue(page.locator("h1").textContent().contains("Espresso Game Testing"));
+        assertTrue(page.locator("#app_header").textContent().contains("Espresso Game Testing"));
 
         page.locator("#username").fill("admin@admin.com");
         page.locator("#password").fill("admin");
-        page.locator(".button-primary").click();
+        page.locator("#login_button").click();
 
-        var loggedUser = page.locator("h2 > span:nth-of-type(2)").textContent();
+        var loggedUser = page.locator("#auth_user").textContent();
         assertEquals("admin@admin.com", loggedUser);
 
         // pode ver usuários, projetos, estratégias, sessões de teste
@@ -66,13 +66,13 @@ public class UserLoginE2ETest {
         var url = "http://localhost:" + serverPort;
         page.navigate(url);
 
-        assertTrue(page.locator("h1").textContent().contains("Espresso Game Testing"));
+        assertTrue(page.locator("#app_header").textContent().contains("Espresso Game Testing"));
 
         page.locator("#username").fill("tester@tester.com");
         page.locator("#password").fill("tester");
-        page.locator(".button-primary").click();
+        page.locator("#login_button").click();
 
-        var loggedUser = page.locator("h2 > span:nth-of-type(2)").textContent();
+        var loggedUser = page.locator("#auth_user").textContent();
         assertEquals("tester@tester.com", loggedUser);
 
         // FALTANDO ASSERTIVAS
@@ -99,10 +99,10 @@ public class UserLoginE2ETest {
         var url = "http://localhost:" + serverPort;
         page.navigate(url);
 
-        assertTrue(page.locator("h1").textContent().contains("Espresso Game Testing"));
+        assertTrue(page.locator("#app_header").textContent().contains("Espresso Game Testing"));
 
-        page.locator(".button-secondary").click();
-        var pageTitle = page.locator(".wrapper > h1").textContent();
+        page.locator("#see_strategies_button").click();
+        var pageTitle = page.locator("#strategies_list_header").textContent();
         assertTrue(pageTitle.contains("Estratégias") || pageTitle.contains("Strategies"));
     }
 }

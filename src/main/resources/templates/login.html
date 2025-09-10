@@ -26,12 +26,12 @@
         <label for="password" th:text="#{login.label.senha}"></label>
         <input type="password" id="password" name="password" th:placeholder="#{login.placeholder.senha}" required/>
 
-        <button type="submit" class="button-primary" th:text="#{login.botao.entrar}"></button>
+        <button type="submit" id="login_button" class="button-primary" th:text="#{login.botao.entrar}"></button>
     </form>
 
     <div style="text-align: center; margin-top: 20px;">
         <p style="color: var(--cafe-medio);" th:text="#{login.visitante.mensagem}"></p>
-        <a th:href="@{/estrategias}" class="button button-secondary" th:text="#{login.visitante.botao}">Ver Estratégias (Visitante)</a>
+        <a th:href="@{/estrategias}" id="see_strategies_button" class="button button-secondary" th:text="#{login.visitante.botao}">Ver Estratégias (Visitante)</a>
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
